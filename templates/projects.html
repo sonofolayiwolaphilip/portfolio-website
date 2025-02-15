@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">My Projects</h2>
+
+    <!-- Project Cards -->
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                <img src="{{ url_for('static', filename=project.image) }}" class="card-img-top" alt="{{ project.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ project.title }}</h5>
+                    <p class="card-text">{{ project.description }}</p>
+                    <small class="text-muted">Technologies: {{ ', '.join(project.technologies) }}</small>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{{ project.demo_link }}" class="btn btn-primary" target="_blank">View Project</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
