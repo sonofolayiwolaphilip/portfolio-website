@@ -1,9 +1,158 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Olayiwola | Portfolio</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+</head>
+<body class="light-mode">
 
-{% block content %}
-<div class="container text-center my-5">
-    <h1>Welcome to My Portfolio</h1>
-    <p class="lead">I’m Joshua Olayiwola, a passionate developer exploring AI, Blockchain, and Python applications.</p>
-    <a href="/projects" class="btn btn-primary">View My Projects</a>
-</div>
-{% endblock %}
+    <!-- 🌑/☀️ Dark Mode Toggle -->
+    <div class="theme-toggle">
+        <button id="themeSwitcher">🌞</button>
+    </div>
+
+    <!-- 🌟 HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="intro-text">Hi, I'm <span class="name"></span></h1>
+            <p class="tagline">Crafting Solutions, Building Impact.</p>
+            <a href="#projects" class="cta-btn">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- 👤 ABOUT SECTION -->
+    <section class="about" data-aos="fade-up">
+        <h2>About Me</h2>
+        <p>
+            I am a passionate software developer with a strong foundation in Python, backend development, and a growing interest in decentralized AI governance. 
+            I enjoy solving problems and building impactful digital solutions.
+        </p>
+    </section>
+
+    <!-- 🛠️ SKILLS SECTION -->
+    <section class="skills" data-aos="fade-up">
+        <h2>My Skills</h2>
+        <div class="skill">
+            <span>Python</span>
+            <div class="skill-bar">
+                <div class="skill-fill python-fill">80%</div>
+            </div>
+        </div>
+        <div class="skill">
+            <span>Flask</span>
+            <div class="skill-bar">
+                <div class="skill-fill flask-fill">75%</div>
+            </div>
+        </div>
+        <div class="skill">
+            <span>Web Development</span>
+            <div class="skill-bar">
+                <div class="skill-fill web-fill">70%</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🛠️ PROJECTS SECTION -->
+    <section class="projects" id="projects" data-aos="fade-up">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Decentralized AI Governance</h3>
+                <p>AI agents for DAOs using Solana, LangChain & Hugging Face.</p>
+            </div>
+            <div class="project-card">
+                <h3>Lagos Housing Insights</h3>
+                <p>Data-driven analysis & presentation on Lagos housing crisis.</p>
+            </div>
+            <div class="project-card">
+                <h3>Python Portfolio Site</h3>
+                <p>A dynamic Flask portfolio showcasing my projects and skills.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 💬 TESTIMONIALS SECTION -->
+    <section class="testimonials" data-aos="fade-up">
+        <h2>What People Say</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial">
+                <p>"Joshua's problem-solving skills are impressive. He consistently delivers high-quality work."</p>
+                <h4>- Jane Doe, Product Manager</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Working with Joshua was a pleasure. His dedication to learning and building solutions is outstanding."</p>
+                <h4>- John Smith, Senior Developer</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Joshua has a unique talent for simplifying complex challenges and delivering impactful projects."</p>
+                <h4>- Alex Taylor, Team Lead</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✉️ CONTACT SECTION -->
+    <section class="contact" data-aos="fade-up">
+        <h2>Contact Me</h2>
+        <form action="/contact" method="post">
+            <input type="text" name="name" placeholder="Your Full Name Here" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+
+    <!-- ⚓ FOOTER -->
+    <footer>
+        <p>&copy; 2024 Joshua Olayiwola. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#">LinkedIn</a> | 
+            <a href="#">GitHub</a> | 
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <!-- Initialize AOS -->
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- Dark Mode Toggle -->
+    <script>
+        const themeBtn = document.getElementById('themeSwitcher');
+        const body = document.body;
+
+        themeBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                themeBtn.textContent = '🌙';
+            } else {
+                themeBtn.textContent = '🌞';
+            }
+        });
+    </script>
+
+    <!-- Interactive Typing Effect -->
+    <script>
+        const nameElement = document.querySelector('.name');
+        const text = "Joshua Olayiwola";
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                nameElement.textContent += text.charAt(index);
+                index++;
+                setTimeout(type, 150);
+            }
+        }
+
+        type();
+    </script>
+
+</body>
+</html>
